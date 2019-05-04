@@ -1,3 +1,9 @@
-.list-group-item {
-  line-height: 2.5;
+* {
+  font-family: 'Libre Baskerville', serif
+}
+a {
+  color: #006064 !important
+}
+a:hover {
+color: darkgray !important
 }

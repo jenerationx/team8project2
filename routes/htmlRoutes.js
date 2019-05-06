@@ -4,6 +4,9 @@ module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
     db.Example.findAll({}).then(function (dbExamples) {
+      // req.user will be undefined if not signed in
+      if (req.user)
+        console.log("Welcome " + req.user.username);
       res.render("index", {
         examples: dbExamples,
         store: "FORUM STORE"
@@ -41,7 +44,8 @@ module.exports = function (app) {
   });
 
   // Render 404 page for any unmatched routes
-  app.get("*", function (req, res) {
-    res.render("404");
-  });
+  // app.get("*", function (req, res) {
+  //   res.render("404");
+  // });
+
 };

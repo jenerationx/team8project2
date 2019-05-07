@@ -1,19 +1,22 @@
 <div class="container">
   <div class="row">
-    <div class="col s2">
+    <div class="col s10">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Example</h5>
-          <p>
-            <strong>ID</strong>: {{example.id}}</p>
-          <p>
-          <p>
-            <strong>Text</strong>: {{example.text}}</p>
-          <p>
-            <strong>Description:</strong> {{example.description}}</p>
-            <a href="/">← Back To Home</a>
+          <br>
+          <h5 class="card-title"> {{ product.Description }}</h5>
+          <div class="card-image">
+            <img src="{{ product.Image }}">
+          </div>
+          <p>Price: ${{ product.Price }}</p>
+          <p>Customer Rating: {{ product.Customer_Rating }}</p>
+          <p>Description: {{ product.Description }}</p>
+          <a id="add-cart" class="btn waves-effect waves-teal"><i class="material-icons left">add_shopping_cart</i>add
+            to cart</a>
         </div>
+        <br>
       </div>
+      <a href="/">← Back To Home</a>
     </div>
   </div>
 </div>

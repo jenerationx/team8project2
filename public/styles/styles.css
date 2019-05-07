@@ -1,9 +1,22 @@
 * {
-  font-family: 'Libre Baskerville', serif
-}
-a {
-  color: #006064 !important
-}
-a:hover {
-color: darkgray !important
-}
+    font-family: 'Libre Baskerville', serif;
+  }
+  a {
+    color: #006064 !important;
+  }
+  a:hover {
+  color: darkgray !important;
+  }
+  .index-img {
+  height: 250px;
+  width: 400px;
+  overflow: hidden;
+  }
+  .forum-img {
+  height: 150px;
+  width: 300px;
+  overflow: hidden;
+  }
+  .forum-card{
+      height: 305px;
+  }

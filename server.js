@@ -6,6 +6,13 @@ var db = require("./models");
 
 var app = express();
 var PORT = process.env.PORT || 3000;
+const isEqualHelperHandlerbar = function (a, b, opts) {
+  if (a == b) {
+    return opts.fn(this)
+  } else {
+    return opts.inverse(this)
+  }
+}
 
 //The following lines are for authentication
 var passport   = require('passport');
@@ -33,7 +40,10 @@ app.use(express.static("public"));
 app.engine(
   "handlebars",
   exphbs({
-    defaultLayout: "main"
+    defaultLayout: "main",
+    helpers: {
+      if_equal: isEqualHelperHandlerbar
+    }
   })
 );
 app.set("view engine", "handlebars");

@@ -4,139 +4,24 @@
             <h1>{{ store }}</h1>
             <h5>{{ title }}</h5>
             <br>
-            {{!-- <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul> --}}
-
             <div class="row">
-                {{!-- {{#each products}} --}}
-                {{!-- {{#if style = modern obviously needs correcting}} --}}
-                {{!-- <div class="col s3">
-                    <div class="card">
+                {{#each products}}
+                {{#if_equal style "modern"}}
+                <div class="col s3">
+                    <div class="forum-card card">
                         <div class="card-image">
-                            <img src="{{ this.image_location }}">
+                            <a href="/product/{{ this.id }}"> <img class="forum-img" src="{{ this.Image }}"></a>
                         </div>
                         <div class="card-content">
-                            <p>{{ this.product_description }}</p>
-                            <p>{{ this.customer_rating }}</p>
+                            <p>Customer Rating: {{ this.Customer_Rating }}</p>
+                            <hr>
+                            <a class="center-block" href="/product/{{ this.id }}">{{ this.Description }}</a>
                         </div>
-                        <div class="card-action">
-                            <a href="/product/{{ this.id }}">{{ this.product_name }}</a>
-                        </div>
-                    </div>
-                </div> --}}
-                {{!-- {{/if}} --}}
-                {{!-- {{/each}} --}}
 
-                <div class="col s3">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="images/sample-1.jpg">
-                        </div>
-                        <div class="card-content">
-                            <p>Product Name</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#">Product Page</a>
-                        </div>
                     </div>
                 </div>
-                <div class="col s3">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="images/sample-1.jpg">
-                        </div>
-                        <div class="card-content">
-                            <p>Product Name</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#">Product Page</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s3">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="images/sample-1.jpg">
-                        </div>
-                        <div class="card-content">
-                            <p>Product Name</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#">Product Page</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s3">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="images/sample-1.jpg">
-                        </div>
-                        <div class="card-content">
-                            <p>Product Name</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#">Product Page</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s3">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="images/sample-1.jpg">
-                        </div>
-                        <div class="card-content">
-                            <p>Product Name</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#">Product Page</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s3">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="images/sample-1.jpg">
-                        </div>
-                        <div class="card-content">
-                            <p>Product Name</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#">Product Page</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s3">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="images/sample-1.jpg">
-                        </div>
-                        <div class="card-content">
-                            <p>Product Name</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#">Product Page</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s3">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="images/sample-1.jpg">
-                        </div>
-                        <div class="card-content">
-                            <p>Product Name</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#">Product Page</a>
-                        </div>
-                    </div>
-                </div>
+                {{/if_equal}}
+                {{/each}}
             </div>
             <div class="col s1">
                 <div class="card">

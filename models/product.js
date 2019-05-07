@@ -7,18 +7,14 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING
         },
         Price: {
-            type: DataTypes.INTEGER
+            type: DataTypes.DECIMAL(10,2)
         },
         Description: {
             type: DataTypes.TEXT
+        },
+        style: {
+            type: DataTypes.STRING
         }
     }); 
-    Product.associate = function(models) {
-        Product.belongsTo(models.Post, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
-    };
     return Product;
 };

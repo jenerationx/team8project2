@@ -3,31 +3,25 @@ var db = require("../models");
 module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
-      // req.user will be undefined if not signed in
-      if (req.user)
-        console.log("Welcome " + req.user.username);
       res.render("index", {
-        examples: dbExamples,
         store: "FORUM STORE"
-      });
     });
   });
 
   app.get("/modern", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
+    db.Product.findAll({}).then(function (dbProducts) {  
       res.render("modern", {
-        examples: dbExamples,
+        products: dbProducts,
         store: "FORUM STORE",
-        title: "Modern"
+        title: "Modern",
       });
     });
   });
 
   app.get("/traditional", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
+    db.Product.findAll({}).then(function (dbProducts) {
       res.render("traditional", {
-        examples: dbExamples,
+        products: dbProducts,
         store: "FORUM STORE",
         title: "Traditional"
       });
@@ -36,12 +30,13 @@ module.exports = function (app) {
 
   // Load example page and pass in an example by id
   app.get("/product/:id", function (req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function (dbExample) {
-      res.render("example", {
-        example: dbExample
+    db.Product.findOne({ where: { id: req.params.id } }).then(function (dbProduct) {
+      res.render("product", {
+        product: dbProduct
       });
     });
   });
+
 
   // Render 404 page for any unmatched routes
   // app.get("*", function (req, res) {

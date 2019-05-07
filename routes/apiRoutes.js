@@ -7,6 +7,11 @@ module.exports = function(app) {
       res.json(dbExamples);
     });
   });
+  app.get("/api/products", function(req, res) {
+    db.Product.findAll({}).then(function(dbProducts) {
+      res.json(dbProducts);
+    });
+  });
 
   // Create a new example
   app.post("/api/examples", function(req, res) {

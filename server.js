@@ -29,6 +29,10 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // for session messaging
 // end authentication
 
+// The following lines are for the chat
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+var fs = require("fs");
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
@@ -57,6 +61,32 @@ require("./config/passport/passport.js")(passport, db.User);
 // Route for authentication
 require("./routes/authRoutes")(app, passport);
 
+io.sockets.on('connection', function(socket) {
+ 
+  socket.on('username', function(username) {
+
+      socket.username = username;
+      io.emit('is_online', '🔵 <i>' + socket.username + ' join the chat..</i>');
+  });
+
+  socket.on('disconnect', function(username) {
+      io.emit('is_online', '🔴 <i>' + socket.username + ' left the chat..</i>');
+  })
+
+  socket.on('chat_message', function(message) {
+
+      io.emit('chat_message', '<strong>' + socket.username + '</strong>: ' + message);
+      // append the chat to a file
+      fs.appendFile("./public/modern.txt", '<li><strong>' + socket.username + '</strong>: ' + message +"</li>", function(err) {
+        // If an error was experienced we will log it.
+        if (err) {
+          console.log(err);
+        }
+      });
+            
+  });
+});
+
 var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
@@ -67,8 +97,10 @@ if (process.env.NODE_ENV === "test") {
 
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function() {
-  app.listen(PORT, function() {
-    console.log(
+  // we need the http to be listening, it can handle both sockets and http 
+  // app.listen(PORT, function() {
+    http.listen(PORT, function() {
+      console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
       PORT,
       PORT

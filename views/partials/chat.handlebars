@@ -1,0 +1,34 @@
+
+<ul id="messages">
+  {{{data}}}
+</ul>
+{{!-- Only add the form if the user is signed in --}}
+{{#if user}}
+<form id="chatForm" data-id="{{user}}">
+  <input id="txt" autocomplete="off" autofocus="on" placeholder="type your message here..." /><button>Send</button>
+</form>
+{{/if}}
+
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    // submit text message without reload/refresh the page
+    var socket = io.connect('http://localhost:3000');
+    // submit text message without reload/refresh the page
+    $("#chatForm").submit(function (e) {
+        e.preventDefault(); // prevents page reloading
+        socket.emit('chat_message', $('#txt').val());
+        $("#txt").val('');
+        return false;
+    });
+    // append the chat text message
+    socket.on('chat_message', function (msg) {
+        $('#messages').append($('<li>').html(msg));
+    });
+    // append text if someone is online
+    socket.on('is_online', function (username) {
+        $('#messages').append($('<li>').html(username));
+    });
+    // ask username
+    socket.emit('username', $("#chatForm").data("id"));
+</script>

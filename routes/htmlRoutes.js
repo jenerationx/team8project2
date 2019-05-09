@@ -1,7 +1,7 @@
 var db = require("../models");
 var fs = require("fs");
 
-module.exports = function (app, PORT) {
+module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
     res.render("index", {
@@ -13,38 +13,45 @@ module.exports = function (app, PORT) {
     db.Product.findAll({}).then(function (dbProducts) {
 
       // get the chat data from the file
-      getChat("./public/modern.txt", function(chatData){
+      getChat("./public/modern.txt", function (chatData) {
 
         // get the userName
         var userName = false;
         if (req.user) {
           userName = req.user.username;
         }
-
-        // check that we have the PORT
-        console.log("THe port is " + PORT);
-
         res.render("modern", {
           products: dbProducts,
           store: "FORUM STORE",
           title: "Modern",
           user: userName,
-          data: chatData,
-          port: PORT
+          data: chatData
         }); // end of render
       });// end of getChat
+    });
   });
-});
 
   app.get("/traditional", function (req, res) {
     db.Product.findAll({}).then(function (dbProducts) {
-      res.render("traditional", {
-        products: dbProducts,
-        store: "FORUM STORE",
-        title: "Traditional"
+      // get the chat data from the file
+      getChat("./public/traditional.txt", function (chatData) {
+
+        // get the userName
+        var userName = false;
+        if (req.user) {
+          userName = req.user.username;
+        }
+        res.render("traditional", {
+          products: dbProducts,
+          store: "FORUM STORE",
+          title: "Traditional",
+          user: userName,
+          data: chatData
+        });
       });
     });
   });
+
 
   // Load example page and pass in an example by id
   app.get("/product/:id", function (req, res) {

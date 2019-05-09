@@ -20,3 +20,7 @@
   .forum-card{
       height: 305px;
   }
+
+  strong {
+    font-weight: bold;
+  }

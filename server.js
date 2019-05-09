@@ -54,7 +54,7 @@ app.set("view engine", "handlebars");
 
 // Routes
 require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app, PORT);
+require("./routes/htmlRoutes")(app);
 
 // Passport Strategy for authentication. Pass in passport and User object
 require("./config/passport/passport.js")(passport, db.User);
@@ -73,11 +73,11 @@ io.sockets.on('connection', function(socket) {
       io.emit('is_online', '🔴 <i>' + socket.username + ' left the chat..</i>');
   })
 
-  socket.on('chat_message', function(message) {
+  socket.on('chat_message', function(message, title) {
 
       io.emit('chat_message', '<strong>' + socket.username + '</strong>: ' + message);
       // append the chat to a file
-      fs.appendFile("./public/modern.txt", '<li><strong>' + socket.username + '</strong>: ' + message +"</li>", function(err) {
+      fs.appendFile("./public/"+title+".txt", '<li><strong>' + socket.username + '</strong>: ' + message +"</li>", function(err) {
         // If an error was experienced we will log it.
         if (err) {
           console.log(err);

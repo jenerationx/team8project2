@@ -54,7 +54,7 @@ app.set("view engine", "handlebars");
 
 // Routes
 require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+require("./routes/htmlRoutes")(app, PORT);
 
 // Passport Strategy for authentication. Pass in passport and User object
 require("./config/passport/passport.js")(passport, db.User);

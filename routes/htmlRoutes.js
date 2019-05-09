@@ -1,7 +1,7 @@
 var db = require("../models");
 var fs = require("fs");
 
-module.exports = function (app) {
+module.exports = function (app, PORT) {
   // Load index page
   app.get("/", function (req, res) {
     res.render("index", {
@@ -21,12 +21,16 @@ module.exports = function (app) {
           userName = req.user.username;
         }
 
+        // check that we have the PORT
+        console.log("THe port is " + PORT);
+
         res.render("modern", {
           products: dbProducts,
           store: "FORUM STORE",
           title: "Modern",
           user: userName,
-          data: chatData
+          data: chatData,
+          port: PORT
         }); // end of render
       });// end of getChat
   });

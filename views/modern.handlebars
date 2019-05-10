@@ -27,12 +27,17 @@
                 <div class="card">
                     <br>
                     <div class="card-header">
-                        <h6>Here's what our other {{title}} customers thought:</h6>
-                        <hr>
+                        <h6>Here's what our other {{title}} customers are saying:</h6>
                     </div>
-                    <div class="card-content left-align"  >
-                    {{>chat data=data user=user title=title}}
+                    <div class="card-content">
+                        {{>chat data=data user=user title=title}}
                     </div>
+                    <div>
+                        <a class="btn" href="/signin" value="Sign In">Sign In</a> or <a class="btn"
+                            href="/signup">Sign Up</a> to
+                        join the conversation!
+                    </div>
+                    <br>
                 </div>
             </div>
         </div>

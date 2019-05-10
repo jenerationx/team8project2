@@ -20,7 +20,9 @@
   .forum-card{
       height: 305px;
   }
-
+a.btn {
+  color: white !important;
+}
   strong {
     font-weight: bold;
   }

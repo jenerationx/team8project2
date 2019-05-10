@@ -1,11 +1,19 @@
-    <form id="signup" name="signup" method="post" action="/signup">
-        <label for="username">Username</label>
-        <input name="username" type="text" />
-        <label for="password">Password</label>
-        <input name="password" type="password" />
-        <input class="btn" type="submit" value="Sign Up" />
-        <div>
-          <p style="color:red">{{msg}}</p>
-        </div>
-    </form>
- 
+<div class="valign-wrapper row">
+  <div class="col s12 pull-s1 m6 pull-m3 l6 pull-l3">
+    <div class="card">
+      <div class="card-content">
+        <h4>Sign Up</h4>
+        <form id="signup" name="signup" method="post" action="/signup">
+          <label for="username">Username</label>
+          <input name="username" type="text" />
+          <label for="password">Password</label>
+          <input name="password" type="password" />
+          <input class="btn" type="submit" value="Sign Up" />
+          <div>
+            <p style="color:red">{{msg}}</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

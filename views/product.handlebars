@@ -2,21 +2,22 @@
   <div class="row">
     <div class="col s10">
       <div class="card">
-        <div class="card-body">
+        <div class="card-body center-align">
           <br>
           <h5 class="card-title"> {{ product.Description }}</h5>
+          <br>
           <div class="card-image">
             <img src="{{ product.Image }}">
           </div>
+          <p>{{ product.Description }}</p>
           <p>Price: ${{ product.Price }}</p>
           <p>Customer Rating: {{ product.Customer_Rating }}</p>
-          <p>Description: {{ product.Description }}</p>
           <a id="add-cart" class="btn waves-effect waves-teal"><i class="material-icons left">add_shopping_cart</i>add
             to cart</a>
         </div>
         <br>
       </div>
-      <a href="/">← Back To Home</a>
+      <a onclick="history.back(-1)"/>← Back</a>
     </div>
   </div>
 </div>

@@ -19,6 +19,7 @@ exports.signin = function(req, res) {
 exports.dashboard = function(req, res) {
     // req.user gives a reference to the local user
     // res.render('dashboard', {username: req.user.username});
+    // Would be nice to know if we are signing into modern or traitional so we could redirect to that page
         res.redirect('/');
   }
 

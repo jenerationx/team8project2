@@ -32,12 +32,15 @@
                     <div class="card-content">
                         {{>chat data=data user=user title=title}}
                     </div>
+                    {{!-- only add these buttons if the user is not signed in  --}}
+                    {{#unless user}}
                     <div>
                         <a class="btn" href="/signin" value="Sign In">Sign In</a> or <a class="btn"
                             href="/signup">Sign Up</a> to
                         join the conversation!
                     </div>
                     <br>
+                    {{/unless}}
                 </div>
             </div>
         </div>

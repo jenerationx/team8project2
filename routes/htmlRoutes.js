@@ -62,7 +62,12 @@ module.exports = function (app) {
     });
   });
 
-
+  app.get("/cart", function (req, res) {
+    res.render("cart", {
+      store: "FORUM STORE"
+    });
+  });
+  
   //  reads the file and returns the file's contents
   var getChat = function (fileName, callback) {
     // read the chat from a file and display in message

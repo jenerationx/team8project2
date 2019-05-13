@@ -5,7 +5,7 @@ A full stack web oriented furniture store that determines the client's style and
 
 
 ## Instructions
-1. Visit the Forum Store home website. 
+1. Visit the [Forum Store](https://forumstore.herokuapp.com/) website. 
 2. Select the room that best suits your style.
 3. Note the new webpage of furniture products for the selected style.
 4. At the bottom of the page, sign up to join the chat. Or there is a guest signin Username: guest, Password: guest.

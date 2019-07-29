@@ -43,7 +43,7 @@ module.exports = function (passport, user) {
           };
 
           // Add the new user to the database
-          User.create(data).then(function (newUser, created) {
+          User.create(data).then(function (newUser) {
             if (!newUser) {
               return done(null, false);
             }

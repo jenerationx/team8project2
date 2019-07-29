@@ -26,7 +26,7 @@ exports.dashboard = function(req, res) {
 // this is how the session ends
 // the user will be sent to the signin page
 exports.logout = function(req, res) {
-    req.session.destroy(function(err) {
+    req.session.destroy(function() {
         res.redirect('/signin');
     });
 }

@@ -70,7 +70,8 @@ io.sockets.on('connection', function(socket) {
   });
 
   socket.on('disconnect', function(username) {
-      io.emit('is_online', '🔴 <i>' + socket.username + ' left the chat..</i>');
+    socket.username = username;
+    io.emit('is_online', '🔴 <i>' + socket.username + ' left the chat..</i>');
   })
 
   socket.on('chat_message', function(message, title) {
@@ -92,7 +93,8 @@ var syncOptions = { force: false };
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
 if (process.env.NODE_ENV === "test") {
-  syncOptions.force = true;
+  // syncOptions.force = true;
+  syncOptions.force = false;
 }
 
 // Starting the server, syncing our models ------------------------------------/
